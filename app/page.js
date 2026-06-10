@@ -8,6 +8,9 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 
+// Imports the Supabase client → render at request time, not at build time.
+export const dynamic = 'force-dynamic';
+
 // Entry point. Confirms the Supabase client is reachable, then routes the user
 // to the dashboard (if logged in) or the login page (if not).
 export default function Home() {

@@ -10,6 +10,9 @@ import { useRouter } from 'next/navigation';
 import { supabase } from '@/lib/supabaseClient';
 import { ensureRestaurantProvisioned } from '@/lib/provision';
 
+// Imports the Supabase client → render at request time, not at build time.
+export const dynamic = 'force-dynamic';
+
 export default function LoginPage() {
   const router = useRouter();
   const [email, setEmail] = useState('');

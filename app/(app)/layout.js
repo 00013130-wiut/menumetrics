@@ -19,6 +19,12 @@ import { ensureRestaurantProvisioned } from '@/lib/provision';
 import Sidebar from '@/components/Sidebar';
 import { ToastProvider } from '@/components/Toast';
 
+// Render these authenticated pages at request time, never at build time. They
+// rely on the Supabase client + a live session, so static prerendering is wrong
+// for them (and would try to use Supabase before env vars exist). This config in
+// the layout cascades to every page in the (app) segment.
+export const dynamic = 'force-dynamic';
+
 // Protected shell for every signed-in page. Loads the user's session and the
 // profile/restaurant/settings that the rest of the app needs, and redirects to
 // /login if there is no session. (RLS is the real security boundary; this guard
