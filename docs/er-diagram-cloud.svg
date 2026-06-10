@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" font-family="Segoe UI, Arial, sans-serif">
+  <rect width="800" height="560" fill="#ffffff"/>
+  <text x="400" y="30" text-anchor="middle" font-size="20" font-weight="700" fill="#15202e">MenuMetrics — Cloud Data Model (Supabase / PostgreSQL)</text>
+  <text x="400" y="50" text-anchor="middle" font-size="12" fill="#64748b">9 tables, all tenant tables carry restaurant_id and are protected by Row-Level Security</text>
+
+  <!-- connectors -->
+  <line x1="400" y1="120" x2="150" y2="170" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="400" y1="120" x2="380" y2="170" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="480" y1="120" x2="630" y2="170" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="560" y1="95" x2="660" y2="95" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="380" y1="240" x2="380" y2="300" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="630" y1="240" x2="430" y2="300" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="630" y1="240" x2="630" y2="430" stroke="#94a3b8" stroke-width="1.6"/>
+  <line x1="150" y1="240" x2="170" y2="300" stroke="#94a3b8" stroke-width="1.6"/>
+
+  <!-- restaurants (hub) -->
+  <g>
+    <rect x="320" y="64" width="170" height="56" rx="8" fill="#fff" stroke="#7c5cff" stroke-width="1.8"/>
+    <rect x="320" y="64" width="170" height="22" rx="8" fill="#7c5cff"/><rect x="320" y="76" width="170" height="10" fill="#7c5cff"/>
+    <text x="405" y="80" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff">restaurants</text>
+    <text x="332" y="102" font-size="10.5" fill="#0f172a">id (PK) · name · city · api_key</text>
+  </g>
+  <!-- settings -->
+  <g>
+    <rect x="560" y="68" width="180" height="52" rx="8" fill="#fff" stroke="#4f9cf9" stroke-width="1.6"/>
+    <rect x="560" y="68" width="180" height="22" rx="8" fill="#4f9cf9"/><rect x="560" y="80" width="180" height="10" fill="#4f9cf9"/>
+    <text x="650" y="84" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">settings</text>
+    <text x="572" y="106" font-size="10" fill="#0f172a">restaurant_id (PK/FK) · currency …</text>
+  </g>
+  <!-- profiles -->
+  <g>
+    <rect x="60" y="174" width="180" height="66" rx="8" fill="#fff" stroke="#22c55e" stroke-width="1.6"/>
+    <rect x="60" y="174" width="180" height="22" rx="8" fill="#22c55e"/><rect x="60" y="186" width="180" height="10" fill="#22c55e"/>
+    <text x="150" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">profiles</text>
+    <text x="72" y="212" font-size="10" fill="#0f172a">id (PK = auth.users.id)</text>
+    <text x="72" y="227" font-size="10" fill="#b45309">restaurant_id (FK) · role</text>
+  </g>
+  <!-- ingredients -->
+  <g>
+    <rect x="300" y="174" width="170" height="66" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="1.6"/>
+    <rect x="300" y="174" width="170" height="22" rx="8" fill="#f59e0b"/><rect x="300" y="186" width="170" height="10" fill="#f59e0b"/>
+    <text x="385" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">ingredients</text>
+    <text x="312" y="212" font-size="10" fill="#0f172a">id (PK) · name · unit</text>
+    <text x="312" y="227" font-size="10" fill="#b45309">restaurant_id (FK) · cost_per_unit</text>
+  </g>
+  <!-- dishes -->
+  <g>
+    <rect x="560" y="174" width="180" height="66" rx="8" fill="#fff" stroke="#ef4444" stroke-width="1.6"/>
+    <rect x="560" y="174" width="180" height="22" rx="8" fill="#ef4444"/><rect x="560" y="186" width="180" height="10" fill="#ef4444"/>
+    <text x="650" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">dishes</text>
+    <text x="572" y="212" font-size="10" fill="#0f172a">id (PK) · name · category</text>
+    <text x="572" y="227" font-size="10" fill="#b45309">restaurant_id (FK) · menu_price</text>
+  </g>
+  <!-- waste_logs -->
+  <g>
+    <rect x="60" y="304" width="190" height="66" rx="8" fill="#fff" stroke="#f59e0b" stroke-width="1.6"/>
+    <rect x="60" y="304" width="190" height="22" rx="8" fill="#f59e0b"/><rect x="60" y="316" width="190" height="10" fill="#f59e0b"/>
+    <text x="155" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">waste_logs</text>
+    <text x="72" y="342" font-size="10" fill="#0f172a">id (PK) · quantity · reason · date</text>
+    <text x="72" y="357" font-size="10" fill="#b45309">restaurant_id · ingredient_id (FK)</text>
+  </g>
+  <!-- recipe_items -->
+  <g>
+    <rect x="320" y="304" width="190" height="66" rx="8" fill="#fff" stroke="#7c5cff" stroke-width="1.6"/>
+    <rect x="320" y="304" width="190" height="22" rx="8" fill="#7c5cff"/><rect x="320" y="316" width="190" height="10" fill="#7c5cff"/>
+    <text x="415" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">recipe_items</text>
+    <text x="332" y="342" font-size="10" fill="#0f172a">id (PK) · quantity</text>
+    <text x="332" y="357" font-size="10" fill="#b45309">dish_id (FK) · ingredient_id (FK)</text>
+  </g>
+  <!-- sales -->
+  <g>
+    <rect x="560" y="304" width="180" height="66" rx="8" fill="#fff" stroke="#ef4444" stroke-width="1.6"/>
+    <rect x="560" y="304" width="180" height="22" rx="8" fill="#ef4444"/><rect x="560" y="316" width="180" height="10" fill="#ef4444"/>
+    <text x="650" y="320" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">sales</text>
+    <text x="572" y="342" font-size="10" fill="#0f172a">id (PK) · quantity · sold_on</text>
+    <text x="572" y="357" font-size="10" fill="#b45309">restaurant_id · dish_id (FK)</text>
+  </g>
+  <!-- activity_logs -->
+  <g>
+    <rect x="560" y="434" width="190" height="62" rx="8" fill="#fff" stroke="#64748b" stroke-width="1.6"/>
+    <rect x="560" y="434" width="190" height="22" rx="8" fill="#64748b"/><rect x="560" y="446" width="190" height="10" fill="#64748b"/>
+    <text x="655" y="450" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">activity_logs</text>
+    <text x="572" y="472" font-size="10" fill="#0f172a">id (PK) · action · entity · detail</text>
+    <text x="572" y="487" font-size="10" fill="#b45309">restaurant_id (FK) · user_email</text>
+  </g>
+
+  <text x="60" y="470" font-size="11" fill="#475569">PK = primary key · FK = foreign key</text>
+  <text x="60" y="488" font-size="11" fill="#475569">Lines = one-to-many references; settings is one-to-one with restaurants.</text>
+  <text x="60" y="506" font-size="11" fill="#475569">profiles.id links to Supabase auth.users (authentication).</text>
+</svg>
