@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MenuMetrics — Restaurant Profitability &amp; Waste Intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">M</div>
+      <div>
+        <h1>MenuMetrics</h1>
+        <div class="sub" id="cafeName">Restaurant profitability &amp; waste intelligence</div>
+      </div>
+    </div>
+    <div class="tag">Final-Year BIS Project · WIUT · so'm (UZS)</div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-view="dashboard" class="active">Dashboard</button>
+    <button data-view="menu">Menu Engineering</button>
+    <button data-view="sales">Sales</button>
+    <button data-view="waste">Waste</button>
+    <button data-view="advisor">Smart Advisor</button>
+  </nav>
+
+  <main>
+    <!-- DASHBOARD -->
+    <section class="view active" id="view-dashboard">
+      <h2 class="section">Overview (last 30 days)</h2>
+      <div class="kpis" id="kpis"></div>
+      <div class="grid-2 wide-left">
+        <div class="card">
+          <h3>Menu Engineering Matrix</h3>
+          <div class="chart-wrap"><canvas id="matrixChart"></canvas></div>
+          <div class="legend">
+            <span class="l-star">Star (keep)</span>
+            <span class="l-plow">Plowhorse (re-cost)</span>
+            <span class="l-puzzle">Puzzle (promote)</span>
+            <span class="l-dog">Dog (cut)</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Revenue vs. Waste Cost (daily)</h3>
+          <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MENU ENGINEERING -->
+    <section class="view" id="view-menu">
+      <h2 class="section">Menu engineering analysis</h2>
+      <p class="hint">Each dish is scored on profitability (gross profit vs. menu average) and popularity (its sales share vs. the 70% rule), then placed in one of four quadrants.</p>
+      <div class="card tight">
+        <table id="menuTable">
+          <thead><tr>
+            <th>Dish</th><th>Category</th><th class="num">Price</th><th class="num">Food cost</th>
+            <th class="num">Food cost %</th><th class="num">Margin</th><th class="num">Sold</th><th>Class</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SALES -->
+    <section class="view" id="view-sales">
+      <h2 class="section">Record a sale</h2>
+      <div class="card tight">
+        <form class="inline" id="salesForm">
+          <div class="field"><label>Dish</label><select id="saleDish"></select></div>
+          <div class="field"><label>Quantity</label><input type="number" id="saleQty" value="1" min="1" /></div>
+          <div class="field"><label>Date</label><input type="date" id="saleDate" /></div>
+          <button class="btn" type="submit">Add sale</button>
+        </form>
+      </div>
+      <div class="card">
+        <h3>Units sold per dish (30 days)</h3>
+        <div class="chart-wrap tall"><canvas id="salesChart"></canvas></div>
+      </div>
+    </section>
+
+    <!-- WASTE -->
+    <section class="view" id="view-waste">
+      <h2 class="section">Log wasted ingredient</h2>
+      <div class="card tight">
+        <form class="inline" id="wasteForm">
+          <div class="field"><label>Ingredient</label><select id="wasteIng"></select></div>
+          <div class="field"><label>Quantity</label><input type="number" id="wasteQty" value="1" min="0" step="0.1" /></div>
+          <div class="field"><label>Reason</label>
+            <select id="wasteReason"><option>spoiled</option><option>expired</option><option>over-prep</option><option>stale</option><option>wilted</option><option>damaged</option></select>
+          </div>
+          <div class="field"><label>Date</label><input type="date" id="wasteDate" /></div>
+          <button class="btn" type="submit">Log waste</button>
+        </form>
+      </div>
+      <div class="grid-2">
+        <div class="card"><h3>Waste cost by ingredient</h3><div class="chart-wrap"><canvas id="wasteChart"></canvas></div></div>
+        <div class="card"><h3>Daily waste cost</h3><div class="chart-wrap"><canvas id="wasteTrendChart"></canvas></div></div>
+      </div>
+      <div class="card">
+        <h3>Recent waste log</h3>
+        <table id="wasteTable"><thead><tr><th>Date</th><th>Ingredient</th><th class="num">Qty</th><th>Reason</th><th class="num">Cost</th></tr></thead><tbody></tbody></table>
+      </div>
+    </section>
+
+    <!-- ADVISOR -->
+    <section class="view" id="view-advisor">
+      <h2 class="section">Smart Advisor</h2>
+      <p class="hint">Plain-language recommendations generated by a transparent rule engine from your menu-engineering and waste data. Each carries the evidence that triggered it.</p>
+      <div id="recs"></div>
+    </section>
+  </main>
+
+  <div class="toast" id="toast"></div>
+</body>
+</html>
