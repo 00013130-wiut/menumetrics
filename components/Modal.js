@@ -19,12 +19,19 @@ export default function Modal({ title, onClose, children, footer, wide }) {
     <div className="modal-backdrop" onMouseDown={onClose}>
       <div
         className="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={typeof title === 'string' ? title : 'Dialog'}
         style={wide ? { maxWidth: 680 } : undefined}
         onMouseDown={(e) => e.stopPropagation()}
       >
         <div className="row-between" style={{ marginBottom: 16 }}>
           <h2 style={{ margin: 0 }}>{title}</h2>
-          <button className="btn btn-ghost btn-sm" onClick={onClose}>
+          <button
+            className="btn btn-ghost btn-sm"
+            onClick={onClose}
+            aria-label="Close dialog"
+          >
             ✕
           </button>
         </div>
