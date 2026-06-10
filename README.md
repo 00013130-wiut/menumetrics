@@ -277,15 +277,5 @@ Sign up with a restaurant name → log in → **Menu → Load demo data** → op
 4. Deploy → open the live URL → sign up and load demo data.
 
 In Supabase → Authentication → URL Configuration, add the Vercel URL to the
-allowed redirect/site URLs.
+allowed redirect/site URLs
 
----
-
-## Viva talking points
-
-- **Multi-tenancy via Postgres RLS** — isolation enforced in the database, not
-  the app.
-- **Systems integration** — POS ingestion via CSV *and* an authenticated push API.
-- **Decision support** — Kasavana–Smith menu engineering + an explainable advisor.
-- **Sustainability (SDG 12)** — waste-cost tracking and the waste ratio.
-- **Cloud deployment & scalability** — managed Postgres + serverless hosting.
